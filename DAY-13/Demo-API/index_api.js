@@ -2,6 +2,7 @@ const exp = require('express')
 const app = exp();
 const PORT = 5000;
 
+app.use(exp.json());
 const books= [
     {id:1, title:"Introduction to Node Js", author:"John Smith"},
     {id:2, title:"Let us C", author:"Dennis R."},
@@ -27,6 +28,17 @@ app.get('/api/books/:id', (req,res)=>{
         res.status(404).json({message: "This book id is not available in Books JSON Data"})
     }
 });
+
+app.post('/api/books',(req,res)=>{
+    const newBook= req.body;
+    console.log(newBook);
+    newBook.id= books.length+1
+    books.push(newBook);
+    res.status(200).json(newBook);
+});
+
+
+
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`)
 });
