@@ -37,7 +37,20 @@ app.post('/api/books',(req,res)=>{
     res.status(200).json(newBook);
 });
 
+app.put('/api/books/:id',(req,res)=>{
 
+    const bookID= parseInt(req.params.id);
+    const updateBook= req.body;
+    const index = books.findIndex((b)=>b.id ===bookID)
+    if(index!==-1)
+    {
+        books[index] = {...bookID[index], ...updateBook};
+        res.send(books[index]);
+    }
+    else{
+        res.status(404).json({message: "This book id is not available in Books JSON Data"})
+    }
+});
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`)
