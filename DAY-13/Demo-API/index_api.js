@@ -13,6 +13,17 @@ app.get('/',(req,res)=>{
     res.send("Welcome to Book Store APIs");
 });
 
+// Create API
+app.post('/api/books',(req,res)=>{
+    const newBook= req.body;
+    console.log(newBook);
+    newBook.id= books.length+1
+    books.push(newBook);
+    res.status(200).json(newBook);
+});
+
+//Read API
+
 app.get('/api/books',(req,res)=>{
     res.json(books);
 })
@@ -29,19 +40,13 @@ app.get('/api/books/:id', (req,res)=>{
     }
 });
 
-app.post('/api/books',(req,res)=>{
-    const newBook= req.body;
-    console.log(newBook);
-    newBook.id= books.length+1
-    books.push(newBook);
-    res.status(200).json(newBook);
-});
-
+//Update API
 app.put('/api/books/:id',(req,res)=>{
 
     const bookID= parseInt(req.params.id);
     const updateBook= req.body;
     const index = books.findIndex((b)=>b.id ===bookID)
+    console.log(index);
     if(index!==-1)
     {
         books[index] = {...bookID[index], ...updateBook};
@@ -51,6 +56,21 @@ app.put('/api/books/:id',(req,res)=>{
         res.status(404).json({message: "This book id is not available in Books JSON Data"})
     }
 });
+
+
+//Delete API
+app.delete('/api/books/:id',(req,res)=>{
+    const bookID= parseInt(req.params.id);    
+    const index = books.findIndex((b)=>b.id ===bookID)   
+    if(index!==-1)
+    {
+        const deleteBook = books.splice(index,1)[0];        
+        res.send(deleteBook);
+    }
+    else{
+        res.status(404).json({message: "This book id is not available in Books JSON Data"})
+    }
+})
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`)
