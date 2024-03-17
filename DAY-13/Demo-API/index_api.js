@@ -3,6 +3,12 @@ const app = exp();
 const PORT = 5000;
 
 app.use(exp.json());
+
+const logRequest = (req,res,next) =>{
+    console.log(`[${new Date().toLocaleDateString()}] ${req.method} ${req.url}`);
+    next();
+} 
+app.use(logRequest);
 const books= [
     {id:1, title:"Introduction to Node Js", author:"John Smith"},
     {id:2, title:"Let us C", author:"Dennis R."},
