@@ -19,7 +19,7 @@ function Home(props)
                 </span>
             </div>
             <div className="btn-wrapper item">
-                <button onClick={()=>{}}>Add to Cart</button>
+                <button onClick={()=>{props.addToCartHandler({price:100, name:'Toy Car'})}}>Add to Cart</button>
             </div>
             </div>
         </div>
