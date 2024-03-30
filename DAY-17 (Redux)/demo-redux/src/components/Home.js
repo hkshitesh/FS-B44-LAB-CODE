@@ -5,12 +5,12 @@ function Home(props)
     return(
         <div>
             <h1>Home Componenet</h1>
-            <div>
-                <div>
+            <div className="cart-wrapper">
+                <div className="img-wrapper item">
                     <img src="https://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/img/car_1.png"/>
                 </div>
             
-            <div>
+            <div className="text-wrapper item">
                 <span>
                     Toy Car
                 </span>
@@ -18,10 +18,11 @@ function Home(props)
                     Price : $100
                 </span>
             </div>
-            <div>
+            <div className="btn-wrapper item">
                 <button onClick={()=>{}}>Add to Cart</button>
             </div>
             </div>
         </div>
     )
 }
+export default Home;
