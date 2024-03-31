@@ -13,4 +13,14 @@ app.post("/create",async (req,res)=>{
     res.send(result);
 });
 
+app.get("/read", async (req,res)=>{
+    let data = await product.find();
+    res.send(data);
+})
+
+app.put("/update/:_id",async (req,res)=>{
+    let data= await product.updateOne(req.params,{$set: req.body});
+    res.send(data);
+})
+
 app.listen(5000);
