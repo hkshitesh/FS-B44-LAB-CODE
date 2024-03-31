@@ -8,7 +8,7 @@ const upload= multer({
             cb(null, 'uploads');
         },
         filename: function(req, file, cb){
-            cb(null, file.fieldname+"-"+Date.now()+"-GFG"+".jpg")
+            cb(null, file.fieldname+"-"+Date.now()+"GFG"+".jpg")
         }
     })
 }).single('file_name')
