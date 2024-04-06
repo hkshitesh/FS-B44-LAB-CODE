@@ -21,8 +21,9 @@
   margin-top: 3px;
   margin-left: 10px;
 }
-
-
+.nav-right{
+  text-align: right;
+}
 .App {
   text-align: center;
 }
