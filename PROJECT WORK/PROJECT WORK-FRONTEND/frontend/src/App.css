@@ -13,6 +13,16 @@
   padding: 5px;
 }
 
+.logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  float: left;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+
 .App {
   text-align: center;
 }
