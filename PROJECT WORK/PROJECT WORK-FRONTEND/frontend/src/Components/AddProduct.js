@@ -8,7 +8,7 @@ const AddProduct =()=>{
     const [company, setCompany]= useState('');
     const [error, setError]= useState(false);
 
-    const AddProduct = async()=>{
+    const addProduct = async()=>{
         if(!name || !price || !company || !category)
         {
             setError(true);
@@ -47,7 +47,7 @@ const AddProduct =()=>{
             {error && !category && <span className='invalid-input'>Enter valid category</span>} 
 
             <input type="text" placeholder='Enter product company' className='inputBox'
-                value={company} onChange={(e) => { setCompnay(e.target.value) }}
+                value={company} onChange={(e) => { setCompany(e.target.value) }}
             />
             {error && !company && <span className='invalid-input'>Enter valid company</span>}
 
@@ -56,3 +56,5 @@ const AddProduct =()=>{
         </div>
     )
 }
+
+export default AddProduct;
